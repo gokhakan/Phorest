@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
                 "html:target/default-html-reports",
                 "rerun:target/rerun.txt"},
         features = "src/test/resources/features",
-        glue = "src/test/java/com/phorest/stepDefinitions/",
+        glue = "com/phorest/stepDefinitions",
         dryRun = false,
         tags = "@wip"
 )

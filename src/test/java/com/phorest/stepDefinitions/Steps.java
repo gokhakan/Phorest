@@ -72,7 +72,7 @@ public class Steps {
     @When("user enters card number")
     public void user_enters_card_number() throws InterruptedException {
         Thread.sleep(3000);
-        js.executeScript("window.scrollBy(0, 1000)");
+        js.executeScript("window.scrollBy(0, 100)");
         Thread.sleep(3000);
         paymentPage.cardNumber.click();
         Thread.sleep(3000);

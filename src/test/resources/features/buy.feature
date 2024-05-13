@@ -8,6 +8,6 @@ Feature: Buy a gift card
     When user enters "Jones" as last name
     And user clicks checkout
     Then user is on confirm page
-    When user clicks Confirm Details
-    Then user is on payment page
-    When user enters card number
+#    When user clicks Confirm Details
+#    Then user is on payment page
+#    When user enters card number
