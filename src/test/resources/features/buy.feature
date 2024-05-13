@@ -5,3 +5,8 @@ Feature: Buy a gift card
     When user selects Gift Card Value
     When user enters "valid@email.com"
     When user enters "Tom" as first name
+    When user enters "Jones" as last name
+    And user clicks checkout
+    Then user is on confirm page
+    When user clicks Confirm Details
+    Then user is on payment page

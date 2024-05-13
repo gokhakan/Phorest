@@ -1,14 +1,18 @@
 package com.phorest.stepDefinitions;
 
+import com.phorest.pages.ConfirmPage;
 import com.phorest.pages.HomePage;
 import com.phorest.utilities.ConfigurationReader;
 import com.phorest.utilities.Driver;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 
 public class Steps {
 
     HomePage homePage = new HomePage();
+    ConfirmPage confirmPage = new ConfirmPage();
 
     @Given("user is on home page")
     public void user_is_on_home_page() throws InterruptedException {
@@ -24,11 +28,8 @@ public class Steps {
 
     @When("user enters {string}")
     public void user_enters(String email) throws InterruptedException {
-        Thread.sleep(3000);
-        homePage.emailField.click();
-
+        Thread.sleep(1000);
         homePage.emailField.sendKeys(email);
-        Thread.sleep(19000);
     }
 
     @When("user enters {string} as first name")
@@ -36,6 +37,31 @@ public class Steps {
         homePage.firstName.sendKeys(firstName);
     }
 
+    @When("user enters {string} as last name")
+    public void user_enters_as_last_name(String surname) {
+        homePage.surname.sendKeys(surname);
+    }
+
+    @When("user clicks checkout")
+    public void user_clicks_checkout() {
+        homePage.checkout.click();
+    }
+
+    @Then("user is on confirm page")
+    public void user_is_on_confirm_page() {
+        Assert.assertEquals("Buy a Gift Card", Driver.get().getTitle());
+    }
+
+    @When("user clicks Confirm Details")
+    public void user_clicks_Confirm_Details() throws InterruptedException {
+        Thread.sleep(3000);
+        confirmPage.confirmDetails.click();
+    }
+
+    @Then("user is on payment page")
+    public void user_is_on_payment_page() {
+        Assert.assertEquals("https://gift-cards.phorest.com/salons/demous#payment", Driver.get().getCurrentUrl());
+    }
 }
 
 

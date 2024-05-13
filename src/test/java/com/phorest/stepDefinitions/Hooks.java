@@ -8,12 +8,12 @@ import org.openqa.selenium.TakesScreenshot;
 
 public class Hooks {
 
-//    @After
-//    public void tearDown(Scenario scenario){
-//        if(scenario.isFailed()){
-//            final byte[] screenshot = ((TakesScreenshot) Driver.get()).getScreenshotAs(OutputType.BYTES);
-//            scenario.attach(screenshot,"image/png","screenshot");
-//        }
-//        Driver.closeDriver();
-//    }
+    @After
+    public void tearDown(Scenario scenario){
+        if(scenario.isFailed()){
+            final byte[] screenshot = ((TakesScreenshot) Driver.get()).getScreenshotAs(OutputType.BYTES);
+            scenario.attach(screenshot,"image/png","screenshot");
+        }
+        Driver.closeDriver();
+    }
 }

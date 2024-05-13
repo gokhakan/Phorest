@@ -19,4 +19,12 @@ public class HomePage {
     @FindBy(xpath = "//input[@data-target='name.purchaserFirstNameInput']")
     public WebElement firstName;
 
+    @FindBy(xpath = "//input[@data-target='name.purchaserLastNameInput']")
+    public WebElement surname;
+
+    @FindBy(xpath = "//button[@data-target='checkout.checkoutButton']")
+    public WebElement checkout;
+
+
+
 }
