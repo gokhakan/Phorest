@@ -9,13 +9,16 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 import static com.phorest.utilities.Driver.driver;
 
 public class Steps {
 
-    JavascriptExecutor js = (JavascriptExecutor) driver;
     HomePage homePage = new HomePage();
     ConfirmPage confirmPage = new ConfirmPage();
     PaymentPage paymentPage = new PaymentPage();
@@ -23,18 +26,16 @@ public class Steps {
     @Given("user is on home page")
     public void user_is_on_home_page() throws InterruptedException {
         Driver.get().get(ConfigurationReader.get("url"));
-        Thread.sleep(3000);
+        Driver.get().manage().window().maximize();
     }
 
     @When("user selects Gift Card Value")
-    public void user_selects_Gift_Card_Value() throws InterruptedException {
-        Thread.sleep(3000);
+    public void user_selects_Gift_Card_Value() {
         homePage.RadioButton50.click();
     }
 
     @When("user enters {string}")
-    public void user_enters(String email) throws InterruptedException {
-        Thread.sleep(1000);
+    public void user_enters(String email) {
         homePage.emailField.sendKeys(email);
     }
 
@@ -55,13 +56,14 @@ public class Steps {
 
     @Then("user is on confirm page")
     public void user_is_on_confirm_page() {
+
         Assert.assertEquals("Buy a Gift Card", Driver.get().getTitle());
     }
 
     @When("user clicks Confirm Details")
-    public void user_clicks_Confirm_Details() throws InterruptedException {
-        Thread.sleep(3000);
-        confirmPage.confirmDetails.click();
+    public void user_clicks_Confirm_Details() {
+
+        Driver.get().findElement(By.xpath("//button[@data-action='confirm#confirmAction']")).click();
     }
 
     @Then("user is on payment page")
@@ -70,14 +72,9 @@ public class Steps {
     }
 
     @When("user enters card number")
-    public void user_enters_card_number() throws InterruptedException {
-        Thread.sleep(3000);
-        js.executeScript("window.scrollBy(0, 100)");
-        Thread.sleep(3000);
+    public void user_enters_card_number() {
         paymentPage.cardNumber.click();
-        Thread.sleep(3000);
         paymentPage.cardNumber.sendKeys(ConfigurationReader.get("cardNumber"));
-        Thread.sleep(3000);
         paymentPage.submit.click();
     }
 
