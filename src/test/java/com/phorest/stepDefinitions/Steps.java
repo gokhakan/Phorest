@@ -2,17 +2,23 @@ package com.phorest.stepDefinitions;
 
 import com.phorest.pages.ConfirmPage;
 import com.phorest.pages.HomePage;
+import com.phorest.pages.PaymentPage;
 import com.phorest.utilities.ConfigurationReader;
 import com.phorest.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.JavascriptExecutor;
+
+import static com.phorest.utilities.Driver.driver;
 
 public class Steps {
 
+    JavascriptExecutor js = (JavascriptExecutor) driver;
     HomePage homePage = new HomePage();
     ConfirmPage confirmPage = new ConfirmPage();
+    PaymentPage paymentPage = new PaymentPage();
 
     @Given("user is on home page")
     public void user_is_on_home_page() throws InterruptedException {
@@ -62,6 +68,19 @@ public class Steps {
     public void user_is_on_payment_page() {
         Assert.assertEquals("https://gift-cards.phorest.com/salons/demous#payment", Driver.get().getCurrentUrl());
     }
+
+    @When("user enters card number")
+    public void user_enters_card_number() throws InterruptedException {
+        Thread.sleep(3000);
+        js.executeScript("window.scrollBy(0, 1000)");
+        Thread.sleep(3000);
+        paymentPage.cardNumber.click();
+        Thread.sleep(3000);
+        paymentPage.cardNumber.sendKeys(ConfigurationReader.get("cardNumber"));
+        Thread.sleep(3000);
+        paymentPage.submit.click();
+    }
+
 }
 
 

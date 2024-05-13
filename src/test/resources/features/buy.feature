@@ -1,4 +1,4 @@
-@regression @search @wip
+@regression @wip
 Feature: Buy a gift card
   Scenario: [1] Buy a gift card - happy path
     Given user is on home page
@@ -10,3 +10,4 @@ Feature: Buy a gift card
     Then user is on confirm page
     When user clicks Confirm Details
     Then user is on payment page
+    When user enters card number
