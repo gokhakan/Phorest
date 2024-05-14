@@ -6,10 +6,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class HomePage {
-    public HomePage(){
+    public HomePage() {
 
         PageFactory.initElements(Driver.get(), this);
     }
+
     @FindBy(id = "option50")
     public WebElement RadioButton50;
 
@@ -24,7 +25,6 @@ public class HomePage {
 
     @FindBy(xpath = "//button[@data-target='checkout.checkoutButton']")
     public WebElement checkout;
-
 
 
 }

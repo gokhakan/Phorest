@@ -1,7 +1,8 @@
 @regression
 Feature: [3] Gift card values
 
-  Background:     Given user is on home page
+  Background:
+    Given user is on home page
 
   Scenario: [3.1] Value too low
     When user selects "Other"

@@ -77,7 +77,6 @@ public class Steps {
         paymentPage.cardNumber.sendKeys(ConfigurationReader.get("cardNumber"));
         paymentPage.submit.click();
     }
-
 }
 
 

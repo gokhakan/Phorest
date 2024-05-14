@@ -1,6 +1,6 @@
 # UI tests for Phorest
 
-<u>Please note: waitFor() method is for demo purposes only!</u>
+<u>Please note: waits are for demo purposes only!</u>
 
 Coding language = `Java 11'`
 
