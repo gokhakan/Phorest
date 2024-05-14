@@ -11,7 +11,7 @@ Feature: [1]Buy a gift card
     When user enters "Jones" as last name
     And user clicks checkout
     Then user is on confirm page
-#    When user clicks Confirm Details
-#    Then user is on payment page
-#    When user enters card details
+    When user clicks Confirm Details
+    Then user is on payment page
+    When user enters card details
     Then "Payment accepted, thank you!" message is displayed
